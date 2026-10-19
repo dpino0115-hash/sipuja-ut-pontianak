@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIPUJA UT Pontianak — Prototipe</title>
+<style>
+:root{--navy:#12345a;--blue:#1d5f9e;--gold:#e8b84a;--bg:#f3f6fa;--ink:#172b42;--muted:#64748b;--line:#dce4ed;--white:#fff;--green:#18794e;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:650}.primary{background:var(--blue);color:#fff}.secondary{background:#e8eef6;color:var(--navy)}.danger{background:#fff0ee;color:var(--red)}.top{background:linear-gradient(120deg,#102d4e,#1d5f9e);color:white;padding:22px max(18px,calc((100% - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:var(--gold);color:#173653;display:grid;place-items:center;font-weight:900;font-size:19px}.brand h1{margin:0;font-size:20px}.brand p{margin:2px 0 0;color:#d6e5f6;font-size:12px}.top small{color:#d6e5f6}.wrap{max-width:1160px;margin:22px auto;padding:0 16px}.notice{padding:12px 14px;border-radius:12px;background:#fff7df;border:1px solid #f1d994;color:#694f11;margin-bottom:18px;font-size:13px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{background:#e6edf5;color:#23445f}.tab.active{background:var(--navy);color:white}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 18px #1c36500a}.panel h2{margin:0 0 5px;font-size:21px}.sub{color:var(--muted);margin:0 0 18px;font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:700;color:#344b63}input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cbd7e4;border-radius:10px;background:white;color:var(--ink)}textarea{min-height:100px;resize:vertical}.help{font-size:12px;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:16px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{font-size:27px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.toolbar input,.toolbar select{max-width:260px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:760px;background:white}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13px}th{background:#f6f8fb;color:#40556c;font-size:12px}tr:last-child td{border-bottom:0}.badge{display:inline-block;padding:4px 8px;border-radius:99px;background:#edf2f7;color:#344b63;font-size:11px;font-weight:750}.badge.warn{background:#fff2cc;color:#775500}.badge.blue{background:#e4f0ff;color:#15549a}.badge.green{background:#e1f6e9;color:#17663e}.badge.red{background:#ffebe8;color:#a3281d}.empty{padding:24px;text-align:center;color:var(--muted)}.ticket{border:1px dashed #8ba8c7;background:#f7fbff;border-radius:12px;padding:16px;margin-top:16px}.ticket strong{font-size:22px;color:var(--blue)}.hidden{display:none!important}.detail{margin-top:14px;padding:14px;background:#f7f9fc;border-radius:12px}.timeline{border-left:2px solid #c8d8e8;padding-left:14px;margin:12px 0}.event{margin:0 0 14px;position:relative}.event:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);position:absolute;left:-19px;top:6px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 16px}.mini{font-size:12px;color:var(--muted)}@media(max-width:760px){.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:16px}.top{padding:18px}.brand h1{font-size:17px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="logo">UT</div><div><h1>SIPUJA UT Pontianak</h1><p>Sistem Informasi Pengajuan Ubah Jadwal Ujian</p></div></div><small>PROTOTIPE • DATA DISIMPAN DI PERANGKAT INI</small></header>
+<main class="wrap">
+<div class="notice"><strong>Catatan penting:</strong> Ini prototipe demonstrasi, bukan layanan resmi yang sudah terhubung ke server UT atau WhatsApp. Data disimpan lokal di browser ini saja. Gunakan data fiktif saat menguji; jangan masukkan data mahasiswa sebenarnya.</div>
+<nav class="tabs">
+<button class="tab active" data-tab="apply">Pengajuan Mahasiswa</button><button class="tab" data-tab="track">Lacak Pengajuan</button><button class="tab" data-tab="admin">Dashboard Petugas</button>
+</nav>
+<section id="apply" class="panel">
+<h2>Formulir Pengajuan Ubah Jadwal Ujian</h2><p class="sub">Isi data dengan lengkap. Pengajuan belum berarti permohonan disetujui.</p>
+<form id="requestForm"><div class="grid">
+<div class="field"><label for="name">Nama lengkap *</label><input id="name" required maxlength="120" placeholder="Nama mahasiswa"></div>
+<div class="field"><label for="nim">NIM *</label><input id="nim" required maxlength="30" placeholder="Nomor Induk Mahasiswa"></div>
+<div class="field"><label for="program">Program studi *</label><select id="program" required><option value="">Pilih program studi</option><option>Manajemen</option><option>Akuntansi</option><option>Ilmu Administrasi Negara</option><option>Ilmu Hukum</option><option>Pendidikan Guru Sekolah Dasar</option><option>Ilmu Komunikasi</option><option>Lainnya</option></select></div>
+<div class="field"><label for="phone">Nomor WhatsApp *</label><input id="phone" required type="tel" maxlength="25" placeholder="Contoh: 08xxxxxxxxxx"></div>
+<div class="field"><label for="period">Masa/periode ujian *</label><input id="period" required placeholder="Contoh: UAS semester ..."></div>
+<div class="field"><label for="course">Kode dan nama mata kuliah *</label><input id="course" required placeholder="Kode — nama mata kuliah"></div>
+<div class="field"><label for="currentDate">Tanggal jadwal saat ini *</label><input id="currentDate" type="date" required></div>
+<div class="field"><label for="currentSession">Sesi dan lokasi ujian saat ini</label><input id="currentSession" placeholder="Sesi / lokasi"></div>
+<div class="field"><label for="changeType">Jenis perubahan *</label><select id="changeType" required><option value="">Pilih jenis perubahan</option><option>Perubahan tanggal</option><option>Perubahan sesi/waktu</option><option>Perubahan lokasi</option><option>Lainnya</option></select></div>
+<div class="field"><label for="requestedDate">Tanggal yang dimohonkan (jika ada)</label><input id="requestedDate" type="date"></div>
+<div class="field"><label for="requestedSession">Sesi/lokasi yang dimohonkan</label><input id="requestedSession" placeholder="Jelaskan jadwal atau lokasi pilihan"></div>
+<div class="field full"><label for="reason">Alasan pengajuan *</label><textarea id="reason" required maxlength="2000" placeholder="Jelaskan alasan dan kondisi yang mendasari permohonan"></textarea></div>
+<div class="field full"><label><input id="confirm" type="checkbox" required style="width:auto;margin-right:8px">Saya menyatakan data yang saya isi benar dan memahami bahwa pengajuan harus diverifikasi serta mengikuti ketentuan UT yang berlaku.</label></div>
+</div><div class="actions"><button class="primary" type="submit">Kirim Pengajuan</button><button class="secondary" type="reset">Bersihkan Formulir</button></div></form>
+<div id="newTicket" class="ticket hidden" aria-live="polite"></div>
+</section>
+<section id="track" class="panel hidden"><h2>Lacak Pengajuan</h2><p class="sub">Gunakan nomor tiket dan NIM untuk melihat status. Pada versi produksi, tambahkan OTP atau verifikasi aman lainnya.</p>
+<form id="trackForm"><div class="grid"><div class="field"><label for="trackTicket">Nomor tiket *</label><input id="trackTicket" required placeholder="SJP-2026-000001"></div><div class="field"><label for="trackNim">NIM *</label><input id="trackNim" required placeholder="NIM saat pengajuan"></div></div><div class="actions"><button class="primary">Cari Pengajuan</button></div></form><div id="trackResult"></div></section>
+<section id="admin" class="hidden">
+<div class="stats"><div class="stat"><span>Total pengajuan</span><strong id="totalStat">0</strong></div><div class="stat"><span>Menunggu verifikasi</span><strong id="verifyStat">0</strong></div><div class="stat"><span>Sedang diproses</span><strong id="processStat">0</strong></div><div class="stat"><span>Belum selesai</span><strong id="openStat">0</strong></div></div>
+<div class="panel"><h2>Dashboard Petugas</h2><p class="sub">Mode demonstrasi tanpa login dan tanpa server. Jangan gunakan untuk operasional nyata.</p>
+<div class="toolbar"><input id="searchBox" placeholder="Cari tiket, nama, NIM..." aria-label="Cari pengajuan"><select id="statusFilter"><option value="">Semua status</option></select><button class="secondary" id="exportBtn" type="button">Ekspor CSV</button><button class="danger" id="clearDemo" type="button">Hapus data lokal</button></div>
+<div class="table-wrap"><table><thead><tr><th>Nomor tiket / mahasiswa</th><th>Jenis perubahan</th><th>Diajukan</th><th>Status</th><th>Tindak lanjut</th></tr></thead><tbody id="requestRows"></tbody></table></div>
+<div id="adminDetail"></div>
+</div></section>
+</main><footer class="footer">SIPUJA UT Pontianak • Prototipe konsep untuk evaluasi alur layanan</footer>
+<script>
+const STATUSES=["Diajukan","Menunggu verifikasi","Perlu perbaikan","Diproses","Menunggu keputusan","Disetujui","Ditolak","Selesai"];
+const KEY="sipuJa_ut_pontianak_demo_v1";
+let requests=load();
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return []}}
+function save(){localStorage.setItem(KEY,JSON.stringify(requests))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function fmt(d){if(!d)return "—";try{return new Date(d).toLocaleString("id-ID",{dateStyle:"medium",timeStyle:"short"})}catch(e){return d}}
+function statusClass(s){if(["Disetujui","Selesai"].includes(s))return "green";if(s==="Ditolak")return "red";if(["Diproses","Menunggu keputusan"].includes(s))return "blue";if(["Perlu perbaikan","Menunggu verifikasi"].includes(s))return "warn";return ""}
+function ticket(){const d=new Date(),prefix=`SJP-${d.getFullYear()}-`;let n=1;requests.forEach(r=>{if(r.ticket.startsWith(prefix)){let x=parseInt(r.ticket.slice(prefix.length),10);if(x>=n)n=x+1}});return prefix+String(n).padStart(6,"0")}
+function showTab(id){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));["apply","track","admin"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));if(id==="admin")renderAdmin()}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
+document.getElementById("requestForm").addEventListener("submit", e => {
+  e.preventDefault();
+  
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Mengirim...";
+
+  const r = {
+    action: "create",
+    ticket: ticket(),
+    name: document.getElementById("name").value.trim(),
+    nim: document.getElementById("nim").value.trim(),
+    program: document.getElementById("program").value,
+    phone: document.getElementById("phone").value.trim(),
+    period: document.getElementById("period").value.trim(),
+    course: document.getElementById("course").value.trim(),
+    currentDate: document.getElementById("currentDate").value,
+    currentSession: document.getElementById("currentSession").value.trim(),
+    changeType: document.getElementById("changeType").value,
+    requestedDate: document.getElementById("requestedDate").value,
+    requestedSession: document.getElementById("requestedSession").value.trim(),
+    reason: document.getElementById("reason").value.trim()
+  };
+
+  // Mengirim data ke Google Sheets via Apps Script
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(r)
+  })
+  .then(() => {
+    // Backup penyimpanan lokal di browser
+    requests.unshift({...r, status: "Diajukan", createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), history: [], followups: []});
+    save();
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Kirim Pengajuan";
+
+    document.getElementById("newTicket").classList.remove("hidden");
+    document.getElementById("newTicket").innerHTML = `
+      <span class="mini">Pengajuan berhasil dikirim dan tersimpan di database Google Sheets!</span><br>
+      Nomor tiket Anda:<br>
+      <strong>${esc(r.ticket)}</strong>
+      <p>Simpan nomor tiket ini untuk melakukan pelacakan status.</p>
+      <button type="button" class="secondary" onclick="document.getElementById('trackTicket').value='${esc(r.ticket)}';document.getElementById('trackNim').value='${esc(r.nim)}';showTab('track');">Lacak pengajuan ini</button>
+    `;
+    e.target.reset();
+  })
+  .catch(err => {
+    alert("Gagal mengirim pengajuan. Periksa koneksi internet Anda.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Kirim Pengajuan";
+  });
+});.unshift(r);save();document.getElementById("newTicket").classList.remove("hidden");document.getElementById("newTicket").innerHTML=`<span class="mini">Pengajuan berhasil dicatat di browser ini (demo).</span><br>Nomor tiket Anda:<br><strong>${esc(r.ticket)}</strong><p>Catat nomor tiket ini untuk pelacakan. Notifikasi WhatsApp belum aktif.</p><button type="button" class="secondary" onclick="document.getElementById('trackTicket').value='${esc(r.ticket)}';document.getElementById('trackNim').value='${esc(r.nim)}';showTab('track');">Lacak pengajuan ini</button>`;e.target.reset();});
+document.getElementById("trackForm").addEventListener("submit",e=>{e.preventDefault();const t=document.getElementById("trackTicket").value.trim().toUpperCase(),n=document.getElementById("trackNim").value.trim();const r=requests.find(x=>x.ticket.toUpperCase()===t&&x.nim===n),out=document.getElementById("trackResult");if(!r){out.innerHTML='<div class="detail">Pengajuan tidak ditemukan. Periksa kembali nomor tiket dan NIM.</div>';return}out.innerHTML=`<div class="detail"><span class="mini">Nomor tiket</span><h2>${esc(r.ticket)}</h2><p><strong>Status:</strong> <span class="badge ${statusClass(r.status)}">${esc(r.status)}</span></p><p><strong>Jenis perubahan:</strong> ${esc(r.changeType)}</p><p><strong>Mata kuliah:</strong> ${esc(r.course)}</p><p><strong>Pembaruan terakhir:</strong> ${fmt(r.updatedAt)}</p><h3>Riwayat status</h3><div class="timeline">${r.history.map(h=>`<div class="event"><strong>${esc(h.status)}</strong><div>${esc(h.note||"Tidak ada catatan publik.")}</div><div class="mini">${fmt(h.at)}</div></div>`).join("")}</div><p class="mini">Untuk pertanyaan lebih lanjut, hubungi kanal layanan resmi UT Pontianak. Prototipe ini tidak mengirim WhatsApp.</p></div>`});
+const filter=document.getElementById("statusFilter");STATUSES.forEach(s=>{let o=document.createElement("option");o.value=s;o.textContent=s;filter.appendChild(o)});document.getElementById("searchBox").addEventListener("input",renderAdmin);filter.addEventListener("change",renderAdmin);
+function renderAdmin(){document.getElementById("totalStat").textContent=requests.length;document.getElementById("verifyStat").textContent=requests.filter(r=>["Diajukan","Menunggu verifikasi"].includes(r.status)).length;document.getElementById("processStat").textContent=requests.filter(r=>["Diproses","Menunggu keputusan"].includes(r.status)).length;document.getElementById("openStat").textContent=requests.filter(r=>!["Selesai","Ditolak"].includes(r.status)).length;const q=document.getElementById("searchBox").value.toLowerCase(),s=filter.value;const rows=requests.filter(r=>(!s||r.status===s)&&[r.ticket,r.name,r.nim,r.course].some(v=>String(v).toLowerCase().includes(q)));const tbody=document.getElementById("requestRows");tbody.innerHTML=rows.length?rows.map(r=>`<tr><td><strong>${esc(r.ticket)}</strong><br>${esc(r.name)}<br><span class="mini">NIM: ${esc(r.nim)}</span></td><td>${esc(r.changeType)}<br><span class="mini">${esc(r.course)}</span></td><td>${fmt(r.createdAt)}</td><td><span class="badge ${statusClass(r.status)}">${esc(r.status)}</span></td><td><button class="secondary" onclick="openDetail('${esc(r.ticket)}')">Buka detail</button></td></tr>`).join(""):'<tr><td colspan="5" class="empty">Belum ada data yang sesuai.</td></tr>'}
+function openDetail(t){const r=requests.find(x=>x.ticket===t);if(!r)return;const box=document.getElementById("adminDetail");box.innerHTML=`<div class="detail"><h2>Detail ${esc(r.ticket)}</h2><p><strong>${esc(r.name)}</strong> • NIM ${esc(r.nim)} • ${esc(r.program)}</p><p>${esc(r.phone)} • ${esc(r.course)} • ${esc(r.period)}</p><p><strong>Jadwal saat ini:</strong> ${esc(r.currentDate)} ${esc(r.currentSession)}</p><p><strong>Permohonan:</strong> ${esc(r.changeType)}; ${esc(r.requestedDate)}; ${esc(r.requestedSession)}</p><p><strong>Alasan:</strong> ${esc(r.reason)}</p><div class="grid"><div class="field"><label for="newStatus">Ubah status</label><select id="newStatus">${STATUSES.map(s=>`<option ${s===r.status?"selected":""}>${s}</option>`).join("")}</select></div><div class="field"><label for="officer">Nama/inisial petugas</label><input id="officer" placeholder="Petugas penanggung jawab"></div><div class="field full"><label for="note">Catatan tindak lanjut (hindari data sensitif)</label><textarea id="note" placeholder="Tindakan, hasil komunikasi, langkah berikutnya..."></textarea></div></div><div class="actions"><button class="primary" onclick="updateRequest('${esc(r.ticket)}')">Simpan tindak lanjut</button></div><h3>Riwayat tindakan</h3><div class="timeline">${r.history.map(h=>`<div class="event"><strong>${esc(h.status)}</strong><div>${esc(h.note)}</div><div class="mini">${fmt(h.at)} • ${esc(h.by)}</div></div>`).join("")}</div></div>`;box.scrollIntoView({behavior:"smooth",block:"start"})}
+function updateRequest(t){const r=requests.find(x=>x.ticket===t);if(!r)return;const st=document.getElementById("newStatus").value,officer=document.getElementById("officer").value.trim(),note=document.getElementById("note").value.trim();if(!officer||!note){alert("Isi nama/inisial petugas dan catatan tindak lanjut.");return}const now=new Date().toISOString();r.status=st;r.updatedAt=now;r.history.push({status:st,note,at:now,by:officer});r.followups.push({note,at:now,by:officer});save();renderAdmin();openDetail(t);alert("Catatan tersimpan di browser ini. Notifikasi eksternal belum dikirim.")}
+document.getElementById("exportBtn").addEventListener("click",()=>{const headers=["Nomor tiket","Nama","NIM","Program studi","WhatsApp","Periode ujian","Mata kuliah","Tanggal saat ini","Jenis perubahan","Tanggal dimohonkan","Sesi/lokasi dimohonkan","Alasan","Status","Diajukan","Pembaruan terakhir"];const val=r=>[r.ticket,r.name,r.nim,r.program,r.phone,r.period,r.course,r.currentDate,r.changeType,r.requestedDate,r.requestedSession,r.reason,r.status,r.createdAt,r.updatedAt];const csv=[headers,...requests.map(val)].map(row=>row.map(x=>'"'+String(x??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="rekap_sipuja_demo.csv";a.click();URL.revokeObjectURL(a.href)});
+document.getElementById("clearDemo").addEventListener("click",()=>{if(confirm("Hapus seluruh data prototipe dari browser ini? Tindakan tidak dapat dibatalkan.")){requests=[];save();renderAdmin();document.getElementById("adminDetail").innerHTML="";}});
+renderAdmin();
+</script>
+const SCRIPT_URL = https://script.google.com/macros/s/AKfycbwJtv3VZDzWnAw58du46f8vSh_RQA2kPLfWaNuKMmmwI83Ipw6LypbxGUbuI1_iW5o/exec
+</body></html>
